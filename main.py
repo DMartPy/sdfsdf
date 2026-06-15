@@ -26,7 +26,7 @@ def guess_number(secret, attempts):
         if guess == secret:
             print('Верно!')
             return
-        elif guess < secret:
+        elif guess > secret:
             print('Больше')
         else:
             print('Меньше')
