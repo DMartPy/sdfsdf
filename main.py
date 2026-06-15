@@ -1,45 +1,53 @@
-# Числа
-integer_num = 10
-float_num = 3.5
+def fizzbuzz(limit):
+    """FizzBuzz: цикл for + if/elif/else."""
+    print('=== FizzBuzz (1-15) ===')
+    for i in range(1, limit + 1):
+        if i % 15 == 0:
+            print('FizzBuzz', end=' ')
+        elif i % 3 == 0:
+            print('Fizz', end=' ')
+        elif i % 5 == 0:
+            print('Buzz', end=' ')
+        else:
+            print(i, end=' ')
+    print('\n')
 
-# Строки
-greeting = 'Привет'
-name = 'Python'
 
-# Булевые значения
-is_active = True
-is_admin = False
+def guess_number(secret, attempts):
+    """Угадай число: цикл while + if/elif/else."""
+    print(f'=== Угадай число (загадано: {secret}) ===')
+    attempt_index = 0
 
-# Арифметические операции с числами
-sum_result = integer_num + float_num
-diff_result = integer_num - float_num
-product_result = integer_num * float_num
-quotient_result = integer_num / float_num
-power_result = integer_num ** 2
-mod_result = integer_num % 3
+    while attempt_index < len(attempts):
+        guess = attempts[attempt_index]
+        attempt_index += 1
+        print(f'Попытка {attempt_index}: {guess}', end=' -> ')
 
-print('=== Переменные разных типов ===')
-print(f'Число (int): {integer_num}, тип: {type(integer_num).__name__}')
-print(f'Число (float): {float_num}, тип: {type(float_num).__name__}')
-print(f'Строка: {greeting}, тип: {type(greeting).__name__}')
-print(f'Строка: {name}, тип: {type(name).__name__}')
-print(f'Булево: {is_active}, тип: {type(is_active).__name__}')
-print(f'Булево: {is_admin}, тип: {type(is_admin).__name__}')
+        if guess == secret:
+            print('Верно!')
+            return
+        elif guess < secret:
+            print('Больше')
+        else:
+            print('Меньше')
 
-print('\n=== Арифметические операции ===')
-print(f'{integer_num} + {float_num} = {sum_result}')
-print(f'{integer_num} - {float_num} = {diff_result}')
-print(f'{integer_num} * {float_num} = {product_result}')
-print(f'{integer_num} / {float_num} = {quotient_result:.2f}')
-print(f'{integer_num} ** 2 = {power_result}')
-print(f'{integer_num} % 3 = {mod_result}')
+    print('Попытки закончились.\n')
 
-print('\n=== Операции со строками ===')
-full_message = greeting + ', ' + name + '!'
-print(f'Конкатенация: {full_message}')
-print(f'Повтор строки: {name * 3}')
 
-print('\n=== Операции с булевыми значениями ===')
-print(f'is_active and is_admin = {is_active and is_admin}')
-print(f'is_active or is_admin = {is_active or is_admin}')
-print(f'not is_admin = {not is_admin}')
+def multiplication_table(number, up_to):
+    """Таблица умножения: цикл for + if/elif/else."""
+    print(f'=== Таблица умножения на {number} ===')
+    for i in range(1, up_to + 1):
+        result = number * i
+        if i == 1:
+            print(f'{number} x {i} = {result}  (начало таблицы)')
+        elif i == up_to:
+            print(f'{number} x {i} = {result}  (конец таблицы)')
+        else:
+            print(f'{number} x {i} = {result}')
+
+
+if __name__ == '__main__':
+    fizzbuzz(15)
+    guess_number(secret=42, attempts=[10, 25, 40, 42])
+    multiplication_table(number=7, up_to=10)
